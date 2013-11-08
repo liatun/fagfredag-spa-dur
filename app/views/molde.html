@@ -1,0 +1,65 @@
+<section>
+	<div data-bind="foreach: moldeData">
+		<h2 data-bind="text: name"></h2>
+		<div data-bind="with: forecast">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h1>Været for <span data-bind="text: place" />, <span data-bind="text: country" /></h1>
+				</div>
+				<div class="panel-body">
+					<div class="row" data-bind="with: forecasts[0].periods[0]">
+						<div class="col-sm-2 col-sm-offset-1 temperature">
+							<span data-bind="text: temperature" /><span>°</span>
+						</div>
+						<div class="col-sm-4 weather">
+							<img data-bind="attr: {src: symbolUrl}" />
+						</div>
+						<div class="col-sm-5">
+							<div class="info">
+								<p>Nedbør</p>
+								<p><span data-bind="text: precipitationMin"/> - <span data-bind="text: precipitationMax"/> mm</p>
+							</div>
+							<div class="info">
+								<p>Vind</p>
+								<p><span data-bind="text: windType"/>, <span data-bind="text: windSpeed"/> m/s fra <span data-bind="text: windDirection"/></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div data-bind="foreach: forecasts">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4><span data-bind="text: $parent.place"/>, <span data-bind="text: date"/></h4>
+					</div>
+				
+					<div class="panel-body">
+						<div data-bind="foreach: periods">
+							<div style="width: 100px;display:inline-block;">
+							 	<span data-bind="text: moment(from).format('HH')" />-<span data-bind="text: moment(to).format('HH')" />
+							</div>
+							<div style="width: 100px; display:inline-block;">
+								<img data-bind="attr: {src: symbolUrl}"/>
+							</div>
+							<div style="width:100px; display:inline-block;">
+								<span data-bind="text: temperature"/>°
+							</div>
+							<div style="width:100px; display:inline-block;">
+								<span data-bind="text: precipitationMin"/> - <span data-bind="text: precipitationMax"/> mm
+							</div>
+							<div style="display:inline-block;">
+								<span data-bind="text: windType"/>, <span data-bind="text: windSpeed"/> m/s fra <span data-bind="text: windDirection"/>
+							</div>
+							<br/>
+							<br/>
+						</div
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+    
+    <!-- <pre data-bind="text: ko.toJSON($data,null,2)"></pre> -->
+</section>

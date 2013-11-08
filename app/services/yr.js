@@ -12,7 +12,7 @@
 
     api.get = function (relativeUrl) {
         //var url = apiUrl + "sted" + relativeUrl + '/varsel.json';
-        var url = apiUrl  + relativeUrl;
+        var url = relativeUrl;
         return system.defer(function(dfd) {
             return http.get(url).done(function(weather) {
                 var periods = weather.weatherdata.forecast[0].tabular[0].time;
